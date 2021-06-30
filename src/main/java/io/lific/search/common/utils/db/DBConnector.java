@@ -10,11 +10,15 @@ public class DBConnector implements Closeable {
     private Connection connection;
 
     public DBConnector(String jdbcUrl) throws SQLException {
-        this.connection = DriverManager.getConnection(jdbcUrl);
+        this(DriverManager.getConnection(jdbcUrl));
     }
 
     public DBConnector(String jdbcUrl, Properties properties) throws SQLException {
-        this.connection = DriverManager.getConnection(jdbcUrl, properties);
+        this(DriverManager.getConnection(jdbcUrl, properties));
+    }
+
+    public DBConnector(Connection connection) throws SQLException {
+        this.connection = connection;
     }
 
     public ResultSet select(String sql) throws SQLException {
