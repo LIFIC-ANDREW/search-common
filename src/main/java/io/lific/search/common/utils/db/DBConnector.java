@@ -17,7 +17,11 @@ public class DBConnector implements Closeable {
         this(DriverManager.getConnection(jdbcUrl, properties));
     }
 
-    public DBConnector(Connection connection) throws SQLException {
+    public DBConnector(String jdbcUrl, String user, String password) throws SQLException {
+        this(DriverManager.getConnection(jdbcUrl, user, password));
+    }
+
+    public DBConnector(Connection connection) {
         this.connection = connection;
     }
 
@@ -56,6 +60,10 @@ public class DBConnector implements Closeable {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             return statement.executeUpdate();
         }
+    }
+
+    public PreparedStatement preparedStatement(String sql) throws SQLException {
+    	return connection.prepareStatement(sql);
     }
 
     @Override
