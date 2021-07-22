@@ -149,7 +149,7 @@ public class StringUtils {
 		return text.replaceAll("\\s+", " ");
 	}
 
-	public String convertToString(Map<?, ?> map) {
+	public static String convertToString(Map<?, ?> map) {
 		return map.keySet().stream()
 			.map(key -> key + "=" + map.get(key))
 			.collect(Collectors.joining(", ", "{", "}"));
