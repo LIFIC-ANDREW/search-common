@@ -32,7 +32,7 @@ public class DBConnectorTest {
 					+ ")", TABLE_NAME))
 			);
 			assertTrue(
-				connector.exist(TABLE_NAME)
+				connector.exist("public", TABLE_NAME)
 			);
 			assertEquals(1
 				, connector.insert(String.format("INSERT INTO %s (name, domain) VALUES ('test1', 'www.test.com')", TABLE_NAME))

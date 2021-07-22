@@ -44,8 +44,8 @@ public class DBConnector implements Closeable {
         }
     }
 
-    public boolean exist(String table) throws SQLException {
-        try (ResultSet rs = connection.getMetaData().getTables(null, null, table, null)) {
+    public boolean exist(String schema, String table) throws SQLException {
+        try (ResultSet rs = connection.getMetaData().getTables(null, schema, table, null)) {
             while (rs.next()) {
                 String name = rs.getString("TABLE_NAME");
                 if (name != null && name.equals(table)) {

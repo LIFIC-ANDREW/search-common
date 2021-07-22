@@ -136,7 +136,7 @@ public abstract class Configuration implements Serializable {
         return (url != null)? url.getPath() : null;
     }
 
-    protected static Map<String, Object> getMapFromConfig(Config config, String path, boolean notNull) {
+    protected static <T> Map<String, T> getMapFromConfig(Config config, String path, boolean notNull) {
         return getValueFromConfig(config, path, ValueType.MAP, notNull);
     }
 
