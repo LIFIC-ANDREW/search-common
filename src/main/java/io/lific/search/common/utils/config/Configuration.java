@@ -128,12 +128,14 @@ public abstract class Configuration implements Serializable {
 
     protected static URL getFileURLFromConfig(Config config, String path, boolean notNull) {
         String file = getStringFromConfig(config, path, notNull);
-        return (FileUtils.getDirectoryPath(file) == null) ? Loader.getResource(file) : FileUtils.toURL(file);
+        return (file == null) ? null
+            : (FileUtils.getDirectoryPath(file) == null) ? Loader.getResource(file)
+            : FileUtils.toURL(file);
     }
 
     protected static String getFileURLStringFromConfig(Config config, String path, boolean notNull) {
         URL url = getFileURLFromConfig(config, path, notNull);
-        return (url != null)? url.getPath() : null;
+        return (url != null) ? url.getPath() : null;
     }
 
     protected static <T> Map<String, T> getMapFromConfig(Config config, String path, boolean notNull) {
