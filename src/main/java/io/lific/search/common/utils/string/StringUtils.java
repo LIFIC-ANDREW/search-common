@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static java.lang.Character.isSpaceChar;
+
 
 public class StringUtils {
 
@@ -80,9 +82,7 @@ public class StringUtils {
 	}
 
 	public static boolean isSpecialChar(char ch) {
-		return (ch < '\u0030' || ch > '\u0039')
-			&& (ch < '\u0041' || ch > '\u005A')
-			&& (ch < '\u0061' || ch > '\u007A');
+		return !isKoreanChar(ch) && !isEnglishChar(ch) && !isNumberChar(ch) && !isSpaceChar(ch);
 	}
 
 	public static boolean isSpecialChar(String str) {
