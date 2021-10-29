@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'io.lific'
-version = '0.1.6'
+version = '0.1.9'
 
 repositories {
     mavenCentral()
@@ -46,11 +46,8 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
     testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
     testImplementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
-    implementation group: 'ch.vorburger.mariaDB4j', name: 'mariaDB4j-core', version: '2.4.0'
-    implementation group: 'ch.vorburger.mariaDB4j', name: 'mariaDB4j-db-mac64', version: '10.2.11'
+    testImplementation group: 'ch.vorburger.mariaDB4j', name: 'mariaDB4j-core', version: '2.4.0'
+    testImplementation group: 'ch.vorburger.mariaDB4j', name: 'mariaDB4j-db-mac64', version: '10.2.11'
 
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.22'
     testImplementation group: 'com.opentable.components', name: 'otj-pg-embedded', version: '0.13.4'
-
-
 }
