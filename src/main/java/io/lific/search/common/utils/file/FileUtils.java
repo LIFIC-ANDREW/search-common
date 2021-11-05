@@ -24,6 +24,9 @@ public class FileUtils {
             reader = new FileReader(filePath);
         } else {
             InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
+            if (in == null) {
+                in = Thread.currentThread().getContextClassLoader().getResourceAsStream(File.separatorChar + filePath);
+            }
             if (in != null) {
                 reader = new BufferedReader(new InputStreamReader(in));
             }
