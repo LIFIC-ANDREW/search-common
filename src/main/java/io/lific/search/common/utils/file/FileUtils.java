@@ -2,10 +2,7 @@ package io.lific.search.common.utils.file;
 
 import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -18,6 +15,20 @@ import java.util.List;
 public class FileUtils {
 
 	private FileUtils() {
+	}
+
+	public static Reader getFileReader(String filePath) throws FileNotFoundException {
+		Reader reader = null;
+		if (Files.exists(Path.of(filePath))) {
+			reader = new FileReader(filePath);
+		} else {
+			InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
+			if (in != null) {
+				reader = new BufferedReader(new InputStreamReader(in));
+			}
+		}
+
+		return reader;
 	}
 
 	public static URL toURL(String filePath) {
